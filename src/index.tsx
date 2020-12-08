@@ -227,10 +227,6 @@ function computeUserReserveDataEth(
     .multipliedBy(priceInEth)
     .dividedBy(10 ** decimals);
 
-  const principalBorrowsETH = valueToZDBigNumber(userReserve.principalBorrows)
-    .multipliedBy(priceInEth)
-    .dividedBy(10 ** decimals);
-
   const currentBorrows = getCompoundedBorrowBalance(
     poolReserve,
     userReserve,
@@ -245,12 +241,8 @@ function computeUserReserveDataEth(
     .dividedBy(10 ** decimals);
 
   return {
-    ...userReserve,
     originationFeeETH: originationFeeETH.toString(),
-    currentBorrows: currentBorrows.toString(),
     currentBorrowsETH: currentBorrowsETH.toString(),
-    principalBorrowsETH: principalBorrowsETH.toString(),
-    currentUnderlyingBalance: currentUnderlyingBalance.toFixed(),
     currentUnderlyingBalanceETH: currentUnderlyingBalanceETH.toFixed(),
   };
 }
